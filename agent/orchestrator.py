@@ -1,4 +1,7 @@
 import logging
+import re
+
+_EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
@@ -136,6 +139,15 @@ def lead_collect_node(state: AgentState) -> dict:
             field_value = str(extracted.content).strip()
         else:
             field_value = raw_answer
+
+        if awaiting == "email" and not _EMAIL_RE.match(field_value):
+            question = f"That doesn't look like a valid email address. Could you share a valid email for {state['lead_data'].get('name', 'you')}?"
+            return {
+                "messages": [AIMessage(content=question)],
+                "lead_data": state["lead_data"],
+                "awaiting_lead_field": "email",
+                "intent": "high_intent",
+            }
 
         lead_data[awaiting] = field_value
         logger.info("Stored lead field '%s'.", awaiting)
