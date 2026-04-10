@@ -1,0 +1,18 @@
+# Virtual environment
+venv/
+
+# FAISS index (auto-rebuilt on first run)
+.faiss_index/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
