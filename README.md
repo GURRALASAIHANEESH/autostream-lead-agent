@@ -1,6 +1,12 @@
 # AutoStream Agent - Social-to-Lead Agentic Workflow
 
-AutoStream Agent is a conversational AI system that qualifies inbound leads from social media content creators. Built on LangGraph and LangChain, it classifies user intent, answers product questions using retrieval-augmented generation against a knowledge base, and collects structured lead information through a multi-turn guided conversation. The system exposes both a CLI interface and a FastAPI service with a Twilio-compatible WhatsApp webhook. It was built as a Machine Learning internship assignment to demonstrate agentic workflow design, strict tool-calling logic, and clean state management in a production-style Python codebase.
+AutoStream Agent is a conversational AI system that qualifies inbound leads
+from social media content creators. Built on LangGraph and LangChain, it
+classifies user intent, answers product questions using retrieval-augmented
+generation against a local knowledge base, and collects structured lead
+information through a multi-turn guided conversation. The system exposes
+both a CLI interface and a FastAPI service with a Twilio-compatible WhatsApp
+webhook.
 
 ## Architecture
 
